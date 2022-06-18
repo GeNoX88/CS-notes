@@ -1,3 +1,5 @@
+清大黃婷婷OCW
+
 pipeline增加throughput但不減少latency
 static multiple issue (compiler approach)
 dynamic multiple issue (hardware approach)
