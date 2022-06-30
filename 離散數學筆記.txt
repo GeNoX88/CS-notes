@@ -54,7 +54,7 @@ asymmetric與antisymetric的差別在於antisymetric允許(a, a)即relation matr
 二元關係 R⊆AXA，R為A上的equivalence relation <=>R is reflexive, symetric and transitive
 二元關係 R⊆AXA，R是等價關係，∀a∈A，定義a的equivalence class [a]={x∈A|xRa}
 [a]是A上的等價關係R的等價類，則P={[a]|a∈A} 會形成A的一個partition
-假設R1, R2⊆AXA為A上的兩個等價關係，其對應的分割分別為pi1以及pi2，定義π1‧π2表示(R1∩R2)對應的分割，π1+π2表示(R1∪R2)對應的分割，π1‧π2會是π1及π2的加細分割，而π1及π2均為π1+π2的加細分割
+假設R1, R2⊆AXA為A上的兩個等價關係，其對應的分割分別為π1以及π2，定義π1‧π2表示(R1∩R2)對應的分割，π1+π2表示(R1∪R2)對應的分割，π1‧π2會是π1及π2的加細分割，而π1及π2均為π1+π2的加細分割
 每一等價關係R對應一種A上的partition(分割)
 R的transitive closure t(R)=R^1∪R^2∪...∪R^∞，若|A|=n，則t(R)也等於R^1∪R^2∪...∪R^n
 假設A,B為兩個非空集合，若存在一函數f:A─>B為一對一且映成函數，稱A,B具有相同的cardinality基數，記作A~B
@@ -111,7 +111,7 @@ S(m+1, n)=S(m, n-1)+nS(m, n)
 有兩個整數m>=n>=1，定義[m n]表示m個相異物安排成恰好n個環形的方法數，稱為第一類Stirling數
 [m+1 n]=[m n-1]+m[m n]
 亂序derangement:對n個相異物做排列，使每個物品不在原本位置或叫自然位置natural place的排列數為D_n=n!*Sum((-1)^i/i!), i=0:n
-定義r_k(C, x)為棋盤C上放k個棋子，且異列異行的方法數，那麼可定義C的rook(棋盤) polynomial r(C, x)=Sum(r_k(C)*x^k), k=0:∞，其中r_0(C)=1
+定義r_k(C, x)為棋盤C上放k個棋子，且異列異行的方法數，那麼可定義C的rook(城堡) polynomial r(C, x)=Sum(r_k(C)*x^k), k=0:∞，其中r_0(C)=1
 rook polynomial可以用來解禁位問題，其x^k的係數即等於S_k/N(k個性質)
 
 
@@ -190,3 +190,116 @@ A(x)為a0, a1, ...的生成函數，則s_n=a0+a1+...+a_n的生成函數為A(x)/(
 61.
 63.
 65.
+
+第五章 遞迴關係
+
+Fibonacci number Fn 的closed form = [((1+根號5)/2)^n-((1-根號5)/2)^n]/根號5
+遞迴關係式，在常係數下可用特徵方程求齊性解，齊性解=Sum(c_k*α_k^n)，若α_i具有重根數m，那麼其貢獻變成[d0+d1n+d2n^2+...+d_(m-1)n^(m-1)]*α_i^n, d為常係數
+存在共軛複根時，將某共軛複根換成ρe^(±iθ)，則這一對共軛複根的貢獻=ρ^n(B1*cos(nθ)+B2*sin(nθ))
+遞迴關係式的右式f(n)不為零，叫非齊性遞迴關係式，f(n)=k次多項式*b^n(包含b=1)時，特解為n^r*(另一k次多項式)*b^n，r為b是特徵解時的重根數
+假設a, b, c∈Z+，其中b>=2，令f:Z+ → R，若f(1)=c, f(n)=af(n/b)+c，其中n=b^k，利用代換法得到k的遞迴關係式後求解，則for n=1, b, b^2,... (1)a=1時，f(n)=c(logb(n)+1) (2)a>=2時，f(n)=c(an^logb(a)-1)/(a-1)
+nth Catalen number，a_n=a_0*a_(n-1) + a_1*a_(n-2) +...+ a_(n-1)*a_0=(2n n)/(n+1)相當於
+(1)n個節點的二元樹個數 (2)整數1, 2,..., n進入一個stack再被pop出來的排列數 (3)x_1~x_(n+1)的乘積，我們依次結合相鄰兩項，結合方法數 (4)(0, 0)到(n, n)的走法中，y<=x的走法數，又它等於(2n n)-(2n n-1)
+
+易錯題：
+
+7.
+19.
+20.
+24.
+26.
+27.
+33.
+36.
+39.
+45.
+46.
+59.
+63.
+64.
+65.
+66.
+67.
+68. (a)
+71.
+72.
+73.
+74.
+75.
+79.
+82. (b)(c)
+88. (b)(c)
+90.
+91.
+94. (a)(c)(d)
+96. (b)(h)
+
+第六章 圖論
+
+多重圖multigraph即存在兩點之間邊數多於一條，否則叫簡單圖simple graph或線性圖linear graph
+trail為不含重複邊的路，path為不含重複點的路
+封閉路線closed trail叫circuit，封閉路徑closed path叫cycle
+無向圖G，若存在V的一個分割使V=V1∪V2且V1∩V2=∅，E中任何邊都是把V1的點跟V2的點相連，則稱G為雙分圖bipartite graph
+k-regular graph是指圖上每個點的degree都是k
+常見特殊圖：(1)Pn包含n個點，邊為{v1, v2}, {v2, v3},...,{v_n-1, v_n}，相當於n個點無向的linked list (2)Cn為n個點的cycle (3)Wn (wheel graph輪子圖)即Cn再加一個跟所有點相連的點 (4)Qn (超立方hypercube)每個點以n bit表示，任兩點相鄰的條件為其bit string只差一位 (5)Petersen graph即五角形內部接個五芒星
+鄰接矩陣adjacency matrix [a_ij]，無向圖中邊{vi, vj}存在或有向圖中邊(vi, vj)存在時為1，否則為0
+接合矩陣incidence matrix [m_ij]是列點行邊，m_ij於i號頂點跟j號邊相接時為1，否則為0
+二個圖G1和G2須滿足下列同構的圖不變性(graph invariant)才會同構(isomorphic)，記作G1≅G2，若有任何一個不成立就不同構
+(1)頂點數相同 (2)邊數相同 (3)degree的序列相同 (4)兩者含有相同的子圖 (5)二對應點距離相同 (6)二對應點的連結性相同
+G(V, E)為無向簡單圖或多重圖，則Sum(deg(v))=2|E|
+連通無向圖的|E|>=|V|-1
+adjacency matrix A，A^r的第(i, j)項等於vi到vj長度為r的path個數
+G(V, E)為一無向圖 iff 圖中沒有奇數長的cycle
+G為一無向簡單或多重圖，它有Euler circuit/trail ⇔ G為連通圖且degree為奇數的點只有0/(0或2)個
+G(V, E)為不含孤立點的無向簡單或多重圖，其中|V|>=3，若它有Hamiltonian cycle/path，則∀v∈V，degree(v)>=2且每個點的恰兩條鄰邊在cycle中
+無迴圈的無向圖G(V, E)，∀x, y∈V，deg(x)+deg(y)>=n-1則G有Hamiltonian trail，G任兩不相鄰點x, y，deg(x)+deg(y)>=n則G有Hamiltonian cycle
+G是連通平面圖，則v-e+r=2，G為M分量平面圖則v-e+r=1+M
+G是無迴圈的簡單連通平面圖，則3r/2<=e<=3v-6，若G不含三角形則2r<=e<=2v-4
+P(G, λ)>0下的最小λ=n即為chromatic number χ(G)，稱G為n-chromatic
+所有平面圖都是4-colorable
+一個圖是平面圖 ⇔ 它沒有子圖是K_5(5頂點之完全圖)或K_3,3(3,3完全雙分圖)
+chromatic polynomial P(G, λ)的最高次項係數必為1，常數項=P(G, 0)=0，各項係數和=P(G, 1)=0，G有c個components那麼λ^n至λ^c係數不為零且正負交替出現
+G(V, E)是一個連通無向圖，e={a, b}∈E，G‧e定義為將a和b黏合後的圖，則P(G, λ)=P(G-e, λ)-P(G‧e, λ)
+independent number β(G)表示圖G的所有獨立(即每個點不相連)子集I，最多點的I的頂點數
+無向圖G(V, E)，V的子集D被稱為dominating set，如果V-D中任一點都跟D相鄰，domination number γ(G)便是最小dominating set的頂點數
+χ(G)=2 ⇔ G是雙分圖，因為Qn是雙分圖所以χ(Qn)=2
+
+易錯題：
+
+2.
+3. (b)
+4.
+5.
+9.
+11. (c)(d)
+14.
+18.
+25.
+29. (d)
+37. (a)
+38. (a)
+39.
+40.
+43. (b)
+46.
+48. (a)(b)
+49.
+50.
+57.
+58. (a)
+62.
+64.
+65.
+66.
+68.
+70.
+72.
+83. (b)
+89. (b)
+94. (e)
+98.
+99. (2)
+100. (b)
+101.
+102. (a)
+103.
