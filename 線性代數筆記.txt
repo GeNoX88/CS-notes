@@ -20,6 +20,7 @@ LU分解的U，各列的樞元不需為1，但是列運算要第1列、第2列�
 
 第二章 行列式
 
+行列式的值=(某行或某列的所有元素)*(對應的子行列式)*(符號規則)
 cof(A_ij) = (-1)^(i+j)*det(A without i-th row and j-th column)
 [adj(A)]_ij = cof(A_ji)
 A*adj(A) = adj(A)A = det(A)I_n
@@ -56,6 +57,7 @@ f_i(x) = ∏((x-t_j)/(t_i-t_j))|j≠i, i=0, 1, ..., n
 矩陣乘上一可逆矩陣，rank不變
 mxn之矩陣A，n=rank(A)+nullity(A)
 rank(A)=rank(A transpose)
+CS(A)又記作R(A)，R是range的意思；RS(A)又記作R(A transpose)
 
 易錯題：
 16. X
@@ -64,3 +66,48 @@ rank(A)=rank(A transpose)
 47. O
 59. O
 72. X
+
+第五章 對角化及其應用
+
+A∈F^(mxn)、B∈F^(nxm)，AB和BA有相同的非零特徵根
+n階方陣A，1<=gm(λi)<=am(λi), gm和am分別是λi的geometric multiplicity和algebraic multiplicity
+假設n階方陣A的特徵多項式可分解且p_A(x)=∏(λi-x), i=1:n，則det(A)=∏λi, tr(A)=Σλi, i=1:n
+n階方陣A，n-rank(A-λI)=nullity(A-λI)=gm(λ)
+P^(-1)AP=D，P是可逆矩陣且每行都是A的dinstinct eigenvectors，則D為對角矩陣
+重要矩陣:對角線為a，其它項為b之n階方陣，eigenvalue為a-b有n-1次及a+b(n-1)有1次
+冪等(idempotent)算子T或矩陣A的特性是T=T^2, A=A^2
+n階方陣A可對角化，v1~vn為A的n個線性獨立的特徵向量，且特徵根分別為λ1~λn，則x'=Ax的通解為x=Sum(ci*exp(λi‧t)*vi), i=1:n
+Markov chain的transition matrix是每項非負且每行和為1的方陣，其|eigenvalue|<=1，其probability vector相當於state vector照比例寫成行和=1，steady state vector其實是機率向量不是狀態向量
+當一個Markov鏈的transition matrix A是regular transition matrix時(∃正整數k使得A^k每項非零)，A的無窮次方的每一行都是steady state vector，並且eigenvalue沒有-1
+
+第七章 內積空間
+
+要證明V上的< , >操作是內積，∀u,v,w ∈V，需證明(1)<αu+βv, w>=α<u, w>+β<v, w> (2)<u, v>=<v, u>取共軛 (3)<v,v> >0 for v≠0 & <v,v>=0 for v=0
+C[a, b]表示所有定義域為[a, b]的連續函數形成之向量空間
+常用不等式:(1)Cauchy-Schwarz不等式 |<u, v>|<=||u||||v|| (2)triangle不等式:||u+v||<=||u||+||v||
+x,y∈V，定義x與y的距離(distance)為d(x, y)=||x-y||
+Gram-Schmidt正交化就是把一組向量v1~vn，依序正交化成u，u1=v1, u2=v2-(<v2, u1>/<u1, u1>)v1, u3=v3-(<v3, u1>/<u1, u1>)v1-(<v3, u2>/<u2, u2>)v2，要注意減掉的分量是跟已經正交化的u內積得到
+QR分解是把m*n矩陣A，經由正交化A之行向量得到單範行向量矩陣Q以及上三角矩陣R，A=QR
+m*n矩陣A為行獨立 ⇔ (A^H)A可逆
+m*n矩陣A，ker((A^H)A)=ker (A)，rank((A^H)A)=rank(A)
+m*n矩陣A為行獨立，W=R(A)，b∈F^(m*1)，則proj_W(b)=A((A^H)A)^(-1)(A^H)b
+已知b∈F^(n*1)，則x∈F^(n*1)使||Ax-b||為最小 ⇔ (A^H)Ax=(A^H)b ──這條叫normal equation
+m*n矩陣A，rank(A)=n，b∈F^(m*1)，若A能被QR分解，則x∈F^(n*1)使||Ax-b||為最小 ⇔ Rx=(Q^H)b
+m*n實矩陣A，則(1)R(A^T)^⊥=N(A) (2)R(A)^⊥=N(A^T) (3)N(A)^⊥=R(A^T) (4)N(A^T)^⊥=R(A)
+m*n矩陣A，m*1行向量b，Ax=b有解，若u滿足A(A^H)u=b，則minimal solution x=(A^H)u有最小的norm
+
+第八章 內積上的算子及其應用
+
+normal matrix定義為(A^H)A=A(A^H)
+35 A∈C^(nxn)，則A為么正矩陣 ⇔ A的行向量形成單範正交集 ⇔ A的列向量形成單範正交集
+46 ∀u,v∈V，假設f∈B(V) (bilinear form集合)，f(u,v)=f(v,u)，f叫對稱雙線性形式symmetric bilinear form，假設f∈F(V) (sesquilinear form集合)，若f(u,v)=f(v,u)取共軛，f叫Hermitian form
+51 A的二次式quadratic form如下：Q(x)=(x^H)Ax，∀x∈C^(nx1)，A∈C^(nxn)；Q(x)=(x^T)Ax，∀x∈R^(nx1)，A∈R^(nxn)
+65 Schur's 定理：A∈F^(nxn)，若其特徵多項式在F中可分解，則存在么正矩陣P使得(P^H)AP為上三角矩陣，其中P=W1*W2*...，Wi用以將A的第i行上三角化
+69 A∈C^(nxn)，則A可么正對角化⇔A為正規矩陣；A∈R^(nxn)，則A可正交對角化⇔A為對稱矩陣
+83 A∈F^(nxn)，定義A的principal minors為Δ_k(A)=det(A左上之k階方陣)
+83 A∈R^(nxn)為對稱矩陣，則A為正定 ⇔ A的特徵根皆為正 ⇔ A的principal minors皆>0
+因為二次式定義的關係，若A不是對稱矩陣，可以藉由檢查對稱矩陣B=(A+A^T)/2的正定性來回答A的正定性
+89 Cholesky decomposition：A∈R^(nxn)為對稱矩陣，若A為正定，則A可分解成LL^T，L是下三角矩陣且對角項皆正
+127 定義||A||_F=(A的各元素絕對值平方和)^(1/2)為A的Frobenius norm
+131 A∈F^(mxn)，則||A||_1=A的最大行向量1-norm；||A||_∞=A的最大列向量1-norm；||A||_2=(最大λ((A^H)A))^(1/2)
+163 A∈F^(mxn)，當rank(A)=n，意即A為行獨立時，A的psudoinverse A^+=((A^H)A)^(-1)(A^H)
