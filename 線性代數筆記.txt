@@ -80,6 +80,29 @@ n階方陣A可對角化，v1~vn為A的n個線性獨立的特徵向量，且特�
 Markov chain的transition matrix是每項非負且每行和為1的方陣，其|eigenvalue|<=1，其probability vector相當於state vector照比例寫成行和=1，steady state vector其實是機率向量不是狀態向量
 當一個Markov鏈的transition matrix A是regular transition matrix時(∃正整數k使得A^k每項非零)，A的無窮次方的每一行都是steady state vector，並且eigenvalue沒有-1
 
+易錯題：
+32. O
+37. X
+38. X
+53. X
+56. O
+78.
+80.
+81.
+82.
+87. (c)
+110. (c)
+116.
+120.
+139. (a)
+144.
+147.
+157. (c)
+163. (c)
+165.
+
+
+
 第七章 內積空間
 
 要證明V上的< , >操作是內積，∀u,v,w ∈V，需證明(1)<αu+βv, w>=α<u, w>+β<v, w> (2)<u, v>=<v, u>取共軛 (3)<v,v> >0 for v≠0 & <v,v>=0 for v=0
@@ -96,6 +119,34 @@ m*n矩陣A，rank(A)=n，b∈F^(m*1)，若A能被QR分解，則x∈F^(n*1)使||A
 m*n實矩陣A，則(1)R(A^T)^⊥=N(A) (2)R(A)^⊥=N(A^T) (3)N(A)^⊥=R(A^T) (4)N(A^T)^⊥=R(A)
 m*n矩陣A，m*1行向量b，Ax=b有解，若u滿足A(A^H)u=b，則minimal solution x=(A^H)u有最小的norm
 
+易錯題：
+12. O
+31. O
+49. (b)
+51. (b)
+59.
+79. (c)
+80.
+85.
+92. (a)
+106.
+107.
+108.
+109.
+110.
+111.
+116.
+117.
+118.
+120.
+121.
+123.
+127.
+131.
+140.
+145. (d)
+156. (b)
+
 第八章 內積上的算子及其應用
 
 normal matrix定義為(A^H)A=A(A^H)
@@ -109,5 +160,25 @@ normal matrix定義為(A^H)A=A(A^H)
 因為二次式定義的關係，若A不是對稱矩陣，可以藉由檢查對稱矩陣B=(A+A^T)/2的正定性來回答A的正定性
 89 Cholesky decomposition：A∈R^(nxn)為對稱矩陣，若A為正定，則A可分解成LL^T，L是下三角矩陣且對角項皆正
 127 定義||A||_F=(A的各元素絕對值平方和)^(1/2)為A的Frobenius norm
+129 A∈F^(mxn)，定義||A|| = max{||Ax||/||x||}, x為非零向量，稱為這個向量長度導出的算子長度
 131 A∈F^(mxn)，則||A||_1=A的最大行向量1-norm；||A||_∞=A的最大列向量1-norm；||A||_2=(最大λ((A^H)A))^(1/2)
+134 可逆矩陣A∈F^(nxn)，定義||A||*||A反|| = cond(A) 是為A的條件數condition number
 163 A∈F^(mxn)，當rank(A)=n，意即A為行獨立時，A的psudoinverse A^+=((A^H)A)^(-1)(A^H)
+154 任何m*n矩陣A皆可做singular value decomposition(SVD)變成UΣ(V^H)，(U^H)AV=Σ, U,V為么正方陣，Σ為m*n矩陣且非對角項都是0，對角項σ=[λ((A^H)A)]^(1/2), σ1>=σ2>= ... >=σ_s, s=min(m,n)
+158 V=[v1 v2 ... vn]，vi為((A^H)A)的第i個單範特徵向量且經過正交化，U=[u1 u2 u_r u_r+1... u_m]，ui=Avi/σi, i=1到r；ui=N(A^H)的單範正交基底, i=r+1到m
+
+易錯題：
+2. X
+7. X
+19. O
+24. O
+35. (b)
+37.
+54. (a)
+61.
+68.
+76.
+84.
+93.
+97.
+98.
